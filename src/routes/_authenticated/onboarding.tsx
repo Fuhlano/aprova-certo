@@ -115,7 +115,13 @@ function Onboarding() {
         }).catch(() => null);
       }
 
-      await supabase.from("profiles").update({ meta_horas_semanais: carga }).neq("id", "");
+      const { data: usuario } = await supabase.auth.getUser();
+      if (usuario.user) {
+        await supabase
+          .from("profiles")
+          .update({ meta_horas_semanais: carga })
+          .eq("id", usuario.user.id);
+      }
       localStorage.setItem("aprova:concurso", concurso.id);
       qc.invalidateQueries();
       toast.success("Tudo pronto!", { description: "Seu plano de estudos foi criado." });
