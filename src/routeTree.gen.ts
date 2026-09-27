@@ -14,8 +14,10 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCicloRouteImport } from './routes/_authenticated/ciclo'
 import { Route as AuthenticatedCronometroRouteImport } from './routes/_authenticated/cronometro'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedRevisoesRouteImport } from './routes/_authenticated/revisoes'
+import { Route as AuthenticatedSimuladosRouteImport } from './routes/_authenticated/simulados'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,6 +43,11 @@ const AuthenticatedCronometroRoute = AuthenticatedCronometroRouteImport.update({
   path: '/cronometro',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
@@ -51,22 +58,31 @@ const AuthenticatedRevisoesRoute = AuthenticatedRevisoesRouteImport.update({
   path: '/revisoes',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSimuladosRoute = AuthenticatedSimuladosRouteImport.update({
+  id: '/simulados',
+  path: '/simulados',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ciclo': typeof AuthenticatedCicloRoute
   '/cronometro': typeof AuthenticatedCronometroRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
+  '/simulados': typeof AuthenticatedSimuladosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ciclo': typeof AuthenticatedCicloRoute
   '/cronometro': typeof AuthenticatedCronometroRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
+  '/simulados': typeof AuthenticatedSimuladosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -75,15 +91,32 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/ciclo': typeof AuthenticatedCicloRoute
   '/_authenticated/cronometro': typeof AuthenticatedCronometroRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/revisoes': typeof AuthenticatedRevisoesRoute
+  '/_authenticated/simulados': typeof AuthenticatedSimuladosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/ciclo' | '/cronometro' | '/onboarding' | '/revisoes'
+    | '/'
+    | '/auth'
+    | '/ciclo'
+    | '/cronometro'
+    | '/dashboard'
+    | '/onboarding'
+    | '/revisoes'
+    | '/simulados'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/ciclo' | '/cronometro' | '/onboarding' | '/revisoes'
+  to:
+    | '/'
+    | '/auth'
+    | '/ciclo'
+    | '/cronometro'
+    | '/dashboard'
+    | '/onboarding'
+    | '/revisoes'
+    | '/simulados'
   id:
     | '__root__'
     | '/'
@@ -91,8 +124,10 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/ciclo'
     | '/_authenticated/cronometro'
+    | '/_authenticated/dashboard'
     | '/_authenticated/onboarding'
     | '/_authenticated/revisoes'
+    | '/_authenticated/simulados'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -138,6 +173,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCronometroRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/onboarding': {
       id: '/_authenticated/onboarding'
       path: '/onboarding'
@@ -152,21 +194,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRevisoesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/simulados': {
+      id: '/_authenticated/simulados'
+      path: '/simulados'
+      fullPath: '/simulados'
+      preLoaderRoute: typeof AuthenticatedSimuladosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCicloRoute: typeof AuthenticatedCicloRoute
   AuthenticatedCronometroRoute: typeof AuthenticatedCronometroRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedRevisoesRoute: typeof AuthenticatedRevisoesRoute
+  AuthenticatedSimuladosRoute: typeof AuthenticatedSimuladosRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCicloRoute: AuthenticatedCicloRoute,
   AuthenticatedCronometroRoute: AuthenticatedCronometroRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedRevisoesRoute: AuthenticatedRevisoesRoute,
+  AuthenticatedSimuladosRoute: AuthenticatedSimuladosRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
