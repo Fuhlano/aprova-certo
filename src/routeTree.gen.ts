@@ -13,8 +13,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCicloRouteImport } from './routes/_authenticated/ciclo'
+import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
 import { Route as AuthenticatedCronometroRouteImport } from './routes/_authenticated/cronometro'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
+import { Route as AuthenticatedEditalRouteImport } from './routes/_authenticated/edital'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedRevisoesRouteImport } from './routes/_authenticated/revisoes'
 import { Route as AuthenticatedSimuladosRouteImport } from './routes/_authenticated/simulados'
@@ -38,6 +41,12 @@ const AuthenticatedCicloRoute = AuthenticatedCicloRouteImport.update({
   path: '/ciclo',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedConfiguracoesRoute =
+  AuthenticatedConfiguracoesRouteImport.update({
+    id: '/configuracoes',
+    path: '/configuracoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedCronometroRoute = AuthenticatedCronometroRouteImport.update({
   id: '/cronometro',
   path: '/cronometro',
@@ -46,6 +55,16 @@ const AuthenticatedCronometroRoute = AuthenticatedCronometroRouteImport.update({
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDesempenhoRoute = AuthenticatedDesempenhoRouteImport.update({
+  id: '/desempenho',
+  path: '/desempenho',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedEditalRoute = AuthenticatedEditalRouteImport.update({
+  id: '/edital',
+  path: '/edital',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
@@ -68,8 +87,11 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ciclo': typeof AuthenticatedCicloRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/cronometro': typeof AuthenticatedCronometroRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/edital': typeof AuthenticatedEditalRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
   '/simulados': typeof AuthenticatedSimuladosRoute
@@ -78,8 +100,11 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/ciclo': typeof AuthenticatedCicloRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/cronometro': typeof AuthenticatedCronometroRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/edital': typeof AuthenticatedEditalRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
   '/simulados': typeof AuthenticatedSimuladosRoute
@@ -90,8 +115,11 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/ciclo': typeof AuthenticatedCicloRoute
+  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/_authenticated/cronometro': typeof AuthenticatedCronometroRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/_authenticated/edital': typeof AuthenticatedEditalRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/revisoes': typeof AuthenticatedRevisoesRoute
   '/_authenticated/simulados': typeof AuthenticatedSimuladosRoute
@@ -102,8 +130,11 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ciclo'
+    | '/configuracoes'
     | '/cronometro'
     | '/dashboard'
+    | '/desempenho'
+    | '/edital'
     | '/onboarding'
     | '/revisoes'
     | '/simulados'
@@ -112,8 +143,11 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/ciclo'
+    | '/configuracoes'
     | '/cronometro'
     | '/dashboard'
+    | '/desempenho'
+    | '/edital'
     | '/onboarding'
     | '/revisoes'
     | '/simulados'
@@ -123,8 +157,11 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/ciclo'
+    | '/_authenticated/configuracoes'
     | '/_authenticated/cronometro'
     | '/_authenticated/dashboard'
+    | '/_authenticated/desempenho'
+    | '/_authenticated/edital'
     | '/_authenticated/onboarding'
     | '/_authenticated/revisoes'
     | '/_authenticated/simulados'
@@ -166,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCicloRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/configuracoes': {
+      id: '/_authenticated/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/cronometro': {
       id: '/_authenticated/cronometro'
       path: '/cronometro'
@@ -178,6 +222,20 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/desempenho': {
+      id: '/_authenticated/desempenho'
+      path: '/desempenho'
+      fullPath: '/desempenho'
+      preLoaderRoute: typeof AuthenticatedDesempenhoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/edital': {
+      id: '/_authenticated/edital'
+      path: '/edital'
+      fullPath: '/edital'
+      preLoaderRoute: typeof AuthenticatedEditalRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/onboarding': {
@@ -206,8 +264,11 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCicloRoute: typeof AuthenticatedCicloRoute
+  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
   AuthenticatedCronometroRoute: typeof AuthenticatedCronometroRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
+  AuthenticatedEditalRoute: typeof AuthenticatedEditalRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedRevisoesRoute: typeof AuthenticatedRevisoesRoute
   AuthenticatedSimuladosRoute: typeof AuthenticatedSimuladosRoute
@@ -215,8 +276,11 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCicloRoute: AuthenticatedCicloRoute,
+  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
   AuthenticatedCronometroRoute: AuthenticatedCronometroRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
+  AuthenticatedEditalRoute: AuthenticatedEditalRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedRevisoesRoute: AuthenticatedRevisoesRoute,
   AuthenticatedSimuladosRoute: AuthenticatedSimuladosRoute,
