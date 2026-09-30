@@ -79,7 +79,7 @@ export async function registrarSessao(registro: RegistroSessao) {
     const agenda = gerarAgendaRevisoes(new Date(), intervalos);
     await supabase.from("revisoes").insert(
       agenda.map((r) => ({
-        assunto_id: registro.assuntoId,
+        assunto_id: registro.assuntoId as string,
         origem_sessao_id: sessao.id,
         data_prevista: r.data,
         indice_intervalo: r.indice,
