@@ -19,6 +19,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
 import { Route as AuthenticatedEditalRouteImport } from './routes/_authenticated/edital'
 import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedRelatoriosRouteImport } from './routes/_authenticated/relatorios'
 import { Route as AuthenticatedRevisoesRouteImport } from './routes/_authenticated/revisoes'
 import { Route as AuthenticatedSimuladosRouteImport } from './routes/_authenticated/simulados'
 
@@ -72,6 +73,11 @@ const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
   path: '/onboarding',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedRelatoriosRoute = AuthenticatedRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedRevisoesRoute = AuthenticatedRevisoesRouteImport.update({
   id: '/revisoes',
   path: '/revisoes',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/edital': typeof AuthenticatedEditalRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
   '/simulados': typeof AuthenticatedSimuladosRoute
 }
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/edital': typeof AuthenticatedEditalRoute
   '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/revisoes': typeof AuthenticatedRevisoesRoute
   '/simulados': typeof AuthenticatedSimuladosRoute
 }
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
   '/_authenticated/edital': typeof AuthenticatedEditalRoute
   '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/relatorios': typeof AuthenticatedRelatoriosRoute
   '/_authenticated/revisoes': typeof AuthenticatedRevisoesRoute
   '/_authenticated/simulados': typeof AuthenticatedSimuladosRoute
 }
@@ -136,6 +145,7 @@ export interface FileRouteTypes {
     | '/desempenho'
     | '/edital'
     | '/onboarding'
+    | '/relatorios'
     | '/revisoes'
     | '/simulados'
   fileRoutesByTo: FileRoutesByTo
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/desempenho'
     | '/edital'
     | '/onboarding'
+    | '/relatorios'
     | '/revisoes'
     | '/simulados'
   id:
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/_authenticated/desempenho'
     | '/_authenticated/edital'
     | '/_authenticated/onboarding'
+    | '/_authenticated/relatorios'
     | '/_authenticated/revisoes'
     | '/_authenticated/simulados'
   fileRoutesById: FileRoutesById
@@ -245,6 +257,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/relatorios': {
+      id: '/_authenticated/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof AuthenticatedRelatoriosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/revisoes': {
       id: '/_authenticated/revisoes'
       path: '/revisoes'
@@ -270,6 +289,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
   AuthenticatedEditalRoute: typeof AuthenticatedEditalRoute
   AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedRelatoriosRoute: typeof AuthenticatedRelatoriosRoute
   AuthenticatedRevisoesRoute: typeof AuthenticatedRevisoesRoute
   AuthenticatedSimuladosRoute: typeof AuthenticatedSimuladosRoute
 }
@@ -282,6 +302,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
   AuthenticatedEditalRoute: AuthenticatedEditalRoute,
   AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedRelatoriosRoute: AuthenticatedRelatoriosRoute,
   AuthenticatedRevisoesRoute: AuthenticatedRevisoesRoute,
   AuthenticatedSimuladosRoute: AuthenticatedSimuladosRoute,
 }
