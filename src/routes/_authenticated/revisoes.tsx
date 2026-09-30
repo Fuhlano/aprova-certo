@@ -27,7 +27,18 @@ function RevisoesPage() {
   const navigate = useNavigate();
 
   const acao = useMutation({
-    mutationFn: async ({ id, patch }: { id: string; patch: Record<string, unknown> }) => {
+    mutationFn: async ({
+      id,
+      patch,
+    }: {
+      id: string;
+      patch: {
+        status?: string;
+        data_prevista?: string;
+        data_concluida?: string | null;
+        indice_intervalo?: number;
+      };
+    }) => {
       const { error } = await supabase.from("revisoes").update(patch).eq("id", id);
       if (error) throw error;
     },

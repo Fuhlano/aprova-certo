@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
+  BarChart3,
   LayoutDashboard,
   RefreshCcw,
   Repeat,
@@ -31,6 +32,7 @@ export const NAV_ITENS = [
   { title: "Edital", url: "/edital", icon: FileText },
   { title: "Desempenho", url: "/desempenho", icon: TrendingUp },
   { title: "Simulados", url: "/simulados", icon: ClipboardList },
+  { title: "Relatórios", url: "/relatorios", icon: BarChart3 },
   { title: "Configurações", url: "/configuracoes", icon: Settings },
 ] as const;
 

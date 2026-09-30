@@ -66,7 +66,13 @@ function CicloPage() {
   });
 
   const atualizarItem = useMutation({
-    mutationFn: async ({ id, patch }: { id: string; patch: Record<string, unknown> }) => {
+    mutationFn: async ({
+      id,
+      patch,
+    }: {
+      id: string;
+      patch: { blocos_concluidos?: number; blocos_previstos?: number; ordem?: number };
+    }) => {
       const { error } = await supabase.from("ciclo_itens").update(patch).eq("id", id);
       if (error) throw error;
     },

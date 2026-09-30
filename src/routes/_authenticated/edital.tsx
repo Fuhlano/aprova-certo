@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { Download, Printer, Search } from "lucide-react";
 
+import { NotaAssunto } from "@/components/nota-assunto";
 import { EstadoVazio, PageContainer, PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -297,7 +298,12 @@ function EditalPage() {
                     <TableCell className="tabular text-right">
                       {formatarPorcentagem(l.percentual)}
                     </TableCell>
-                    <TableCell>{l.ultimaRevisao ? formatarData(l.ultimaRevisao) : "—"}</TableCell>
+                    <TableCell>
+                      <span className="flex items-center gap-1">
+                        {l.ultimaRevisao ? formatarData(l.ultimaRevisao) : "—"}
+                        <NotaAssunto assuntoId={l.id} nome={l.nome} />
+                      </span>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

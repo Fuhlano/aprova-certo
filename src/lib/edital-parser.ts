@@ -99,7 +99,7 @@ export function parseEdital(texto: string): DisciplinaParseada[] {
     }
 
     if (!atual) garantirDisciplina("Disciplina não identificada");
-    const disciplina = atual as DisciplinaParseada;
+    const disciplina = atual as unknown as DisciplinaParseada;
 
     const conteudo = numerado ? numerado.texto : linha;
     if (!conteudo || conteudo.length < 2) continue;
