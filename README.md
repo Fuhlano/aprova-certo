@@ -57,7 +57,7 @@ Correções pedidas depois do prompt inicial:
 
 ## Endereço da aplicação publicada
 
-🔗 **https://141847ac-146c-4943-9c61-cdfc6c95e62b.lovable.app**
+🔗 **https://aprova-study-cycle.lovable.app**
 
 ## Telas
 
